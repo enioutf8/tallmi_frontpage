@@ -19,14 +19,11 @@
         <div class="forms-obj-unit obj-1">1</div>
         <div class="forms-obj-unit obj-2"></div>
         <div class="forms-obj-unit obj-3">3</div>
-
         <div class="bar"></div>
       </div>
-
       <header class="container-fluid site-header">
         <nav class="navbar navbar-expand-lg rounded-pill fixed-top">
           <div class="container-fluid content-nav">
-            <!-- TOGGLER (mobile → offcanvas) -->
             <button
               class="navbar-toggler d-lg-none"
               type="button"
@@ -51,15 +48,16 @@
               </svg>
             </button>
 
-            <!-- LOGO -->
             <a class="navbar-brand mx-auto mx-lg-0" href="#">
               <figure class="logo mb-0">
                 <img src="./public/imgs/logo.png" alt="Logo" />
               </figure>
             </a>
-            <button class=" invisible navbar-toggler d-lg-none" type="button"></button>
+            <button
+              class="invisible navbar-toggler d-lg-none"
+              type="button"
+            ></button>
 
-            <!-- MENU NORMAL (DESKTOP) -->
             <div class="collapse navbar-collapse d-none d-lg-flex">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -114,6 +112,9 @@
           </div>
         </div>
       </header>
+      <div style="z-index: 1;" class="container-fluid">
+        <h1>SITES <br /><span class="sub-h1">QUE VENDEM</span></h1>
+      </div>
     </section>
   </body>
 
@@ -121,16 +122,4 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="./public/js/navBars.js"></script>
-  <script>
-    const navbar = document.querySelector(".navbar");
-    const collapse = document.getElementById("navbarSupportedContent");
-
-    collapse.addEventListener("show.bs.collapse", () => {
-      navbar.classList.add("no-radius");
-    });
-
-    collapse.addEventListener("hidden.bs.collapse", () => {
-      navbar.classList.remove("no-radius");
-    });
-  </script>
 </html>

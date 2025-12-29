@@ -103,12 +103,6 @@
   will-change: transform, border-radius;
 }
 
-.site-header {
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 999;
-}
-
 .navbar {
   position: fixed;
   top: 20px;
@@ -222,9 +216,20 @@
 
 @media (max-width: 600px) {
   .hero {
-    padding: 30px 0px !important;
+    padding: 130px 0px !important;
     background: url("../imgs/bg/bg_line.png") center / cover no-repeat,
       linear-gradient(160deg, #bf47c1 0%, #7a2d8f 45%, #561f64 100%);
+  }
+
+  h1 {
+    font-size: 4em !important;
+    color: #f1f2eb;
+    line-height: 0.8 !important;
+    letter-spacing: -0.03em;
+  }
+  .sub-h1 {
+    font-size: 0.8em !important;
+    color: #f1f2eb;
   }
 
   .obj-2 {
@@ -240,12 +245,6 @@
     width: 360px;
     height: 660px;
     animation: blobFloat 18s ease-in-out infinite !important;
-  }
-
-  .site-header {
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 999;
   }
 
   .navbar {
