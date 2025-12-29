@@ -235,15 +235,15 @@
   .area-data-hero {
     display: flex;
     align-items: center;
-    justify-content: space-around;
   }
   .area-data-hero h2 {
-    font-size: 1.9em;
+    font-size: 1.5em;
     color: #f1f2eb;
   }
   .area-data-hero span {
-    opacity: .5;
+    opacity: 0.5;
     color: #f1f2eb;
+    margin-right: 10px;
   }
   .text-subtitle {
     text-align: justify;
