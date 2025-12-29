@@ -19,18 +19,20 @@
         <div class="forms-obj-unit obj-1">1</div>
         <div class="forms-obj-unit obj-2"></div>
         <div class="forms-obj-unit obj-3">3</div>
+
+        <div class="bar"></div>
       </div>
 
       <header class="container-fluid site-header">
-        <nav class="navbar navbar-expand-lg rounded-pill">
+        <nav class="navbar navbar-expand-lg rounded-pill fixed-top">
           <div class="container-fluid content-nav">
+            <!-- TOGGLER (mobile → offcanvas) -->
             <button
-              class="navbar-toggler"
+              class="navbar-toggler d-lg-none"
               type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasNavbar"
+              aria-controls="offcanvasNavbar"
               aria-label="Toggle navigation"
             >
               <svg
@@ -48,63 +50,86 @@
                 <line x1="3" y1="18" x2="21" y2="18" />
               </svg>
             </button>
-            <a class="navbar-brand" href="#">
-              <figure class="logo">
-                <img src="./public/imgs/logo.png" />
+
+            <!-- LOGO -->
+            <a class="navbar-brand mx-auto mx-lg-0" href="#">
+              <figure class="logo mb-0">
+                <img src="./public/imgs/logo.png" alt="Logo" />
               </figure>
             </a>
-            <div class="invisible">Tallmi*</div>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- MENU NORMAL (DESKTOP) -->
+            <div class="collapse navbar-collapse d-none d-lg-flex">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >Home</a
-                  >
+                  <a class="nav-link active" href="#">PROGRAMS</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Dropdown
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
-                  </ul>
+                  <a class="nav-link" href="#">BLOG & ADVOCACY</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                  <a class="nav-link" href="#">STORIES</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">CONTACT</a>
                 </li>
               </ul>
-              <form class="d-flex" role="search">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
+              <button class="btn-glass">Lorem Ipsum</button>
             </div>
           </div>
         </nav>
+        <div
+          class="offcanvas offcanvas-start d-lg-none"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="offcanvas-body">
+            <ul class="navbar-nav mb-4">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">PROGRAMS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">BLOG & ADVOCACY</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">STORIES</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">CONTACT</a>
+              </li>
+            </ul>
+            <br>
+            <button class="btn-glass btn-lg w-100">Lorem Ipsum</button>
+          </div>
+        </div>
       </header>
     </section>
   </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./public/js/navBars.js"></script>
+  <script>
+    const navbar = document.querySelector(".navbar");
+    const collapse = document.getElementById("navbarSupportedContent");
+
+    collapse.addEventListener("show.bs.collapse", () => {
+      navbar.classList.add("no-radius");
+    });
+
+    collapse.addEventListener("hidden.bs.collapse", () => {
+      navbar.classList.remove("no-radius");
+    });
+  </script>
 </html>
