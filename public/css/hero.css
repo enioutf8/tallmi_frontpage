@@ -222,7 +222,7 @@
   }
 
   h1 {
-    font-size: 4em !important;
+    font-size: 3.5em !important;
     color: #f1f2eb;
     line-height: 0.8 !important;
     letter-spacing: -0.03em;
@@ -232,6 +232,41 @@
     color: #f1f2eb;
   }
 
+  .area-data-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .area-data-hero h2 {
+    font-size: 1.9em;
+    color: #f1f2eb;
+  }
+  .area-data-hero span {
+    opacity: .5;
+    color: #f1f2eb;
+  }
+  .text-subtitle {
+    text-align: justify;
+    color: #f1f2eb;
+    font-size: 1.05em;
+  }
+
+  .btn-first-contact {
+    background-color: #f1f2eb;
+    color: #8f2f93;
+    font-weight: 600;
+  }
+  .btn-first-contact {
+    background-color: #f1f2eb;
+    color: #8f2f93;
+    font-weight: 600;
+  }
+  .btn-secound-contact {
+    background-color: #ca47d3;
+    color: #f1f2eb;
+    font-weight: 600;
+    margin-left: 10px;
+  }
   .obj-2 {
     top: 0%;
     right: -200px;
