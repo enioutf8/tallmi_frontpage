@@ -1,0 +1,205 @@
+.hero {
+    position: relative;
+    padding: 30px 50px;
+    width: 100%;
+    height: 950px;
+    overflow: hidden;
+    background:
+        url('../imgs/bg/bg_line.png') center / cover no-repeat,
+        linear-gradient(160deg,
+            #cd40d0 0%,
+            #7a2d8f 45%,
+            #672677 100%);
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero .container-fluid {
+    position: relative;
+    z-index: 2;
+}
+
+.forms-obj-unit {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    opacity: 0.8;
+}
+
+.obj-1 {
+
+    position: absolute;
+    z-index: 1;
+    top: 20%;
+    left: -200px;
+    width: 360px;
+    height: 660px;
+    background: radial-gradient(circle at 70% 30%,
+            #d96be0 0%,
+            #c54acb 50%,
+            #8f2f93 100%);
+
+    filter: blur(24px);
+    opacity: 0.65;
+    border-radius:
+        62% 38% 55% 45% / 48% 60% 40% 52%;
+
+    pointer-events: none;
+    animation: blobFloat 25s ease-in-out infinite;
+    will-change: transform, border-radius;
+}
+
+.obj-2 {
+    /*backdrop-filter: saturate(180%) blur(10px);*/
+    z-index: 2;
+    position: absolute;
+    top: 10%;
+    right: -100px;
+    width: 320px;
+    height: 420px;
+    background: radial-gradient(circle at 30% 30%,
+            #ed5cf7 0%,
+            #c54acb 45%,
+            #a63aa9 100%);
+    filter: blur(15px);
+    opacity: 0.75;
+    border-radius:
+        58% 42% 63% 37% / 55% 66% 34% 45%;
+    pointer-events: none;
+    animation: blobFloat 18s ease-in-out infinite;
+    will-change: transform, border-radius;
+}
+
+.obj-3 {
+    position: absolute;
+    bottom: -250px;
+    left: 40%;
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 520px;
+    height: 360px;
+    background: radial-gradient(circle at 40% 60%,
+            #d96be0 0%,
+            #b848c1 45%,
+            #7d2b80 100%);
+
+    filter: blur(28px);
+    opacity: 0.6;
+    border-radius:
+        55% 45% 60% 40% / 60% 40% 55% 45%;
+    pointer-events: none;
+    animation: blobFloat 42s ease-in-out infinite;
+    will-change: transform, border-radius;
+}
+
+
+@media (max-width: 600px) {
+
+    .hero {
+        padding: 30px 0px !important;
+        background:
+            url('../imgs/bg/bg_line.png') center / cover no-repeat,
+            linear-gradient(160deg,
+                #cd40d0 0%,
+                #7a2d8f 45%,
+                #561f64 100%);
+    }
+
+    .obj-2 {
+        top: 0%;
+        right: -200px;
+        width: 300px;
+        height: 400px;
+    }
+
+    .obj-1 {
+        top: 20%;
+        left: -260px;
+        width: 360px;
+        height: 660px;
+        animation: blobFloat 18s ease-in-out infinite !important;
+    }
+
+    .site-header {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 999;
+
+    }
+
+    .navbar {
+        position: fixed;
+        top: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 25px);
+
+        background: rgba(255, 255, 255, 0.22);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(7px);
+        -webkit-backdrop-filter: blur(7px);
+        padding: 20px !important;
+
+    }
+
+    .navbar-toggler {
+
+        height: 60px !important;
+        width: 60px !important;
+        border-radius: 50% !important;
+        border: 1px solid #f1f2eb !important;
+
+    }
+
+    .navbar-toggler-icon {
+        background-color: #f1f2eb !important;
+    }
+
+    .content-nav {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+
+    .logo {
+        margin: 0 auto !important;
+        width: 120px;
+        height: 50px;
+    }
+
+    .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {}
+
+@keyframes blobFloat {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        border-radius: 58% 42% 63% 37% / 55% 66% 34% 45%;
+    }
+
+    33% {
+        transform: translate(-20px, -30px) rotate(5deg) scale(1.03);
+        border-radius: 65% 35% 55% 45% / 45% 60% 40% 55%;
+    }
+
+    66% {
+        transform: translate(25px, 15px) rotate(-5deg) scale(0.97);
+        border-radius: 50% 50% 60% 40% / 60% 40% 60% 40%;
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        border-radius: 58% 42% 63% 37% / 55% 66% 34% 45%;
+    }
+}
