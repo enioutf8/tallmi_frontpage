@@ -105,7 +105,7 @@
         background:
             url('../imgs/bg/bg_line.png') center / cover no-repeat,
             linear-gradient(160deg,
-                #cd40d0 0%,
+                #bf47c1 0%,
                 #7a2d8f 45%,
                 #561f64 100%);
     }
@@ -134,7 +134,7 @@
 
     .navbar {
         position: fixed;
-        top: 30px;
+        top: 20px;
         left: 50%;
         transform: translateX(-50%);
         width: calc(100% - 25px);
@@ -143,16 +143,19 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(7px);
         -webkit-backdrop-filter: blur(7px);
-        padding: 10px !important;
+        padding: 5px !important;
 
     }
 
     .navbar-toggler {
-
         height: 50px !important;
         width: 50px !important;
         border-radius: 50% !important;
         border: 1px solid #f1f2eb !important;
+    }
+
+    .navbar-toggler:hover {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
 
     }
 
