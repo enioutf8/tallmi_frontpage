@@ -2,7 +2,7 @@
   position: relative;
   padding: 30px 50px;
   width: 100%;
-  height: 950px;
+  height: max-content;
   overflow: hidden;
   background: url("../imgs/bg/bg_line.png") center / cover no-repeat,
     linear-gradient(160deg, #cd40d0 0%, #7a2d8f 45%, #672677 100%);
@@ -221,6 +221,12 @@
       linear-gradient(160deg, #bf47c1 0%, #7a2d8f 45%, #561f64 100%);
   }
 
+  .area-content-hero {
+    z-index: 1 !important;
+    display: flex;
+    flex-direction: column;
+  }
+
   h1 {
     font-size: 3.5em !important;
     color: #f1f2eb;
@@ -255,17 +261,19 @@
     background-color: #f1f2eb;
     color: #8f2f93;
     font-weight: 600;
+    padding: 15px;
+    font-size: 1.1em;
+    border: none !important;
   }
-  .btn-first-contact {
-    background-color: #f1f2eb;
-    color: #8f2f93;
-    font-weight: 600;
-  }
+
   .btn-secound-contact {
     background-color: #ca47d3;
     color: #f1f2eb;
     font-weight: 600;
     margin-left: 10px;
+    padding: 15px;
+    font-size: 1.1em;
+    border: none !important;
   }
   .obj-2 {
     top: 0%;
@@ -338,15 +346,90 @@
   }
 
   .offcanvas {
-    /* From https://css.glass */
     background: rgba(255, 255, 255, 0.22);
     border-bottom-left-radius: 0px !important;
     border-top-left-radius: 0px !important;
-    border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.409);
+  }
+  /* CARROSSEL */
+  .area-banner-hero {
+    margin: 30px auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .banner-hero {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background-color: #7c2192;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    border: 1px solid #aa41c4;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+      rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  }
+  .carousel-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  .carousel-fade .carousel-item {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    position: absolute;
+    inset: 0;
+  }
+
+  .carousel-fade .carousel-item.active {
+    opacity: 1;
+    position: relative;
+  }
+
+  .carousel-item-hero {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .carousel-item-hero img {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.1);
+    object-fit: cover;
+  }
+  .carousel-indicators-hero button {
+    transform: translateY(60px);
+    width: 15px !important;
+    height: 15px !important;
+    border-radius: 50% !important;
+    background-color: #240b2a !important;
+  }
+  .carousel-indicators-hero button.active {
+    background-color: #f1f2eb !important;
+    transform: translateY(60px) scale(1.1);
+    opacity: 1;
+    
+  }
+  .carousel-indicators-hero button:not(.active) {
+    opacity: 0.5;
+  }
+
+  .carousel-indicators-hero button {
+    transition: all 0.3s ease;
   }
 }
 
