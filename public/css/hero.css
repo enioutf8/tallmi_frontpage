@@ -5,7 +5,7 @@
   height: max-content;
   overflow: hidden;
   background: url("../imgs/bg/bg_line.png") center / cover no-repeat,
-    linear-gradient(160deg, #cd40d0 0%, #7a2d8f 45%, #672677 100%);
+    linear-gradient(160deg, #982e9a 0%, #7a2d8f 45%, #672677 100%);
 }
 
 .hero-bg {
@@ -216,9 +216,9 @@
 
 @media (max-width: 600px) {
   .hero {
-    padding: 130px 0px !important;
+    padding: 130px 0px 0px 0px !important;
     background: url("../imgs/bg/bg_line.png") center / cover no-repeat,
-      linear-gradient(160deg, #bf47c1 0%, #7a2d8f 45%, #561f64 100%);
+      linear-gradient(160deg, #842e85 0%, #7a2d8f 45%, #561f64 100%);
   }
 
   .area-content-hero {
@@ -252,7 +252,6 @@
     margin-right: 10px;
   }
   .text-subtitle {
-    text-align: justify;
     color: #f1f2eb;
     font-size: 1.05em;
   }
@@ -275,6 +274,7 @@
     font-size: 1.1em;
     border: none !important;
   }
+
   .obj-2 {
     top: 0%;
     right: -200px;
@@ -441,6 +441,23 @@
 
   .carousel-indicators-hero button {
     transition: all 0.3s ease;
+  }
+
+  /* SECOUND TITLE */
+  .second-title {
+    text-align: right;
+  }
+  .imgs-parcerias {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .img-pc {
+    width: 200px;
+  }
+  .img-pc img {
+    width: 100%;
+    object-fit: contain;
   }
 }
 
