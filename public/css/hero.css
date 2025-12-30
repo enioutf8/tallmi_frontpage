@@ -361,21 +361,24 @@
     justify-content: center;
     align-items: center;
   }
-  .banner-hero {
-    width: 350px;
-    height: 350px;
-    border-radius: 50%;
-    background-color: #7c2192;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.banner-hero {
+  width: min(350px, 90vw);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: #7c2192;
 
-    position: relative;
-    border: 1px solid #aa41c4;
-    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
-      rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  border: 1px solid #aa41c4;
+  box-shadow:
+    rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
   .carousel-inner {
     display: flex;
     align-items: center;
@@ -396,8 +399,8 @@
   }
 
   .carousel-item-hero {
-    width: min(300px, 80vw);
-    aspect-ratio: 1 / 1;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     margin: auto;
     overflow: hidden;
@@ -405,7 +408,6 @@
     align-items: center;
     justify-content: center;
   }
-
   .carousel-item-hero img {
     width: 100%;
     height: 100%;
