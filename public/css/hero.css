@@ -52,21 +52,33 @@
 @keyframes starBlink {
   0% {
     opacity: 0;
-    transform: scale(0.5);
+    transform: translate(0, 0) scale(0.6);
   }
-  40% {
+
+  30% {
     opacity: 1;
-    transform: scale(1);
+    transform: translate(var(--dx), var(--dy)) scale(1);
   }
+
   70% {
     opacity: 0.8;
-    transform: scale(0.9);
+    transform: translate(
+        calc(var(--dx) * 1.3),
+        calc(var(--dy) * 1.3)
+      )
+      scale(0.9);
   }
+
   100% {
     opacity: 0;
-    transform: scale(0.4);
+    transform: translate(
+        calc(var(--dx) * 1.6),
+        calc(var(--dy) * 1.6)
+      )
+      scale(0.5);
   }
 }
+
 
 /* HEADER E CONTEÚDO — CAMADA MAIS ALTA */
 .site-header,
