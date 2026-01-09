@@ -1,0 +1,243 @@
+.area-btn-chat {
+  position: fixed;
+  bottom: 12%;
+  right: 4%;
+  width: 70px;
+  height: 70px;
+  z-index: 1;
+}
+
+.btn-chat {
+  animation: blobFloatChat 18s ease-in-out infinite !important;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 10%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  background-color: #ede6f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+.btn-chat img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scaleX(-1);
+}
+
+.btn-chat {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+/* CHAT FECHADO → BOTÃO VISÍVEL */
+.area-btn-chat:not(.area-btn-chat-active):not(.chat-closing) .btn-chat {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+/* CHAT ABERTO */
+.area-btn-chat.area-btn-chat-active .btn-chat {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+/* CHAT ABERTO */
+.area-btn-chat-active {
+  width: 320px;
+  height: 420px;
+}
+
+/* Container do chatbot */
+.chatbot {
+  animation: blobFloatChat 18s ease-in-out infinite !important;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: scale(0.9) translateY(10px);
+  pointer-events: none;
+
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  flex-direction: column;
+  overflow: hidden;
+  animation: chatOpen 0.3s ease;
+}
+.anime-open-chat {
+  animation: chatOpen 0.3s ease;
+}
+
+.area-btn-chat-active .chatbot {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+@keyframes chatOpen {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* HEADER */
+.chatbot-header {
+  height: 56px;
+  padding: 0 14px;
+  background: #7c2192;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chatbot-user span {
+  display: block;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* AÇÕES */
+.chatbot-actions button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+/* BODY */
+.chatbot-body {
+  flex: 1;
+  padding: 16px;
+  font-size: 14px;
+  color: #333;
+}
+
+.chat-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.chat-option {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #7c2192;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.chat-option:hover {
+  background: #9b35b5;
+  transform: translateY(-2px);
+}
+
+.chat-back {
+  margin-top: 10px;
+  background: transparent;
+  color: #7c2192;
+  border: none;
+  cursor: pointer;
+}
+
+.chatbot-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chatbot-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.btn-minimize {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-minimize:hover {
+  background: rgba(255, 255, 255, 0.312);
+  transform: scale(1.1);
+}
+
+/* FECHANDO CHAT */
+.chatbot {
+  transform-origin: bottom right;
+}
+
+.area-btn-chat.chat-closing .chatbot {
+  animation: chatClose 0.35s ease forwards;
+  opacity: 0;
+  transform: scale(0.85) translateY(20px);
+  pointer-events: none;
+}
+
+@keyframes chatClose {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
+}
+
+@keyframes blobFloatChat {
+  0% {
+    transform: translate(0);
+  }
+
+  33% {
+    transform: translatey(-10px);
+  }
+
+  66% {
+    transform: translatey(10px);
+  }
+
+  100% {
+    transform: translatey(0) rotate(0deg);
+  }
+}

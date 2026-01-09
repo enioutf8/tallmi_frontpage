@@ -4,10 +4,25 @@
   width: 100%;
   height: max-content;
   overflow: hidden;
-  background: url("../imgs/bg/bg_line.png") center / contain repeat,
-    linear-gradient(160deg, #982e9a 0%, #7a2d8f 45%, #672677 100%);
+  background: linear-gradient(160deg, #cc47ce 0%, #7a2d8f 45%, #5b1c6b 100%);
 }
 
+/* TEXTURA – camada MAIS BAIXA */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../imgs/bg/bg_line.png");
+  background-repeat: repeat;
+  background-size: contain;
+  background-position: 0% 50%;
+  opacity: 0.8;
+  animation: drift 10s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* FUNDO DECORATIVO */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -15,9 +30,49 @@
   pointer-events: none;
 }
 
-.hero .container-fluid {
+.stars-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #ffffff;
+  opacity: 0;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+  animation: starBlink ease-in-out forwards;
+}
+
+@keyframes starBlink {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  70% {
+    opacity: 0.8;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+
+/* HEADER E CONTEÚDO — CAMADA MAIS ALTA */
+.site-header,
+.area-content-hero {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .forms-obj-unit {
@@ -30,10 +85,11 @@
 .bar {
   backdrop-filter: saturate(180%) blur(10px);
   position: fixed;
-  width: 160px;
+  width: 320px;
   background-color: #7e2d8c;
   height: 100% !important;
   left: 150px;
+  transform: translateX(-30px);
 }
 
 .obj-1 {
@@ -76,7 +132,7 @@
   opacity: 0.75;
   border-radius: 58% 42% 63% 37% / 55% 66% 34% 45%;
   pointer-events: none;
-  animation: blobFloat 8s ease-in-out infinite;
+  animation: blobFloat 15s ease-in-out infinite;
   will-change: transform, border-radius;
 }
 
@@ -104,11 +160,7 @@
 }
 
 .navbar {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 300px);
+  margin-top: 20px;
   background: rgba(255, 255, 255, 0.068);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -127,6 +179,16 @@
   color: #f1f2eb !important;
   margin: 10px 30px !important;
   text-decoration: none;
+}
+.btn-cta {
+  color: #f1f2eb;
+  font-weight: 600;
+  background-color: #f1f2eb00;
+  border: 2px solid #f1f2eb;
+}
+.btn-cta:hover {
+  color: #561f64;
+  background-color: #f1f2eb;
 }
 
 /* linha */
@@ -220,7 +282,6 @@
   justify-content: center;
   align-items: center;
   width: calc(100% - 200px);
-   
 }
 
 .area-side-hero {
@@ -232,9 +293,9 @@
 }
 
 h1 {
-  
-  font-size: 6em !important;
+  font-size: 7em !important;
   top: 0;
+  text-align: center;
   z-index: 100 !important;
   color: #f1f2eb;
   line-height: 0.8 !important;
@@ -261,8 +322,8 @@ h1 {
 }
 .text-subtitle {
   color: #f1f2eb;
-  font-size: 1.05em;
-  text-align: justify;
+  font-size: 1.2em;
+  text-align: center;
 }
 
 .btn-first-contact {
@@ -299,6 +360,8 @@ h1 {
   align-items: center;
 }
 .banner-hero {
+  position: relative;
+  padding: 20px;
   transform: translateY(-3%);
   width: min(350px, 85vw);
   aspect-ratio: 1 / 1;
@@ -308,31 +371,41 @@ h1 {
   align-items: center;
   justify-content: center;
   margin: auto;
-  border: 2px solid #aa41c4;
+  cursor: pointer;
   backdrop-filter: saturate(180%) blur(10px);
   box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px inset,
     rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
+/* borda animada */
+.banner-hero::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #ff6ec4, #aa41c4, #7c2192, #ff6ec4);
+  animation: spin 8s linear infinite;
+  z-index: -1;
+}
+
 .carousel,
 .carousel-inner,
 .carousel-item {
   width: 100%;
+  height: 100%;
 }
 
 .carousel-item {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
 }
 
 .carousel-inner {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
-  width: 100%;
-  height: 100%;
 }
 .carousel-fade .carousel-item {
   opacity: 0;
@@ -354,16 +427,29 @@ h1 {
   margin: auto;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
 }
 .carousel-item-hero img {
   width: 100%;
-  height: 100%;
-  transform: scale(1.1);
+  height: max-content; /* maior que o container para permitir rolagem */
   object-fit: cover;
-  z-index: 1 !important;
+  object-position: top center;
+  position: absolute;
+  top: 0;
+  transition: filter 0.5s ease;
+  animation: heroScroll 10s ease-in-out infinite alternate;
 }
+
+.carousel-item-hero video {
+  transform: scale(1.5) translateY(-10%);
+  transform-origin: top center;
+}
+
+.carousel-item-hero:hover video {
+  filter: grayscale(0%);
+}
+
 .carousel-indicators-hero button {
   transform: translateY(60px);
   width: 15px !important;
@@ -445,13 +531,11 @@ h1 {
     justify-content: center;
     align-items: center;
     width: 100%;
-    border: 1px solid white;
   }
   h1 {
-    position: absolute;
     font-size: 5em !important;
     top: 0;
-    z-index: 1;
+    z-index: 100 !important;
     color: #f1f2eb;
     line-height: 0.8 !important;
     letter-spacing: -0.03em;
@@ -497,9 +581,12 @@ h1 {
     align-self: self-start;
     margin-right: 20px;
   }
+  .banner-hero {
+    width: 100% !important;
+  }
   h1 {
     position: relative;
-    font-size: 4em !important;
+    font-size: 3em !important;
 
     z-index: 1;
     color: #f1f2eb;
@@ -517,7 +604,6 @@ h1 {
     display: none !important;
   }
 }
-
 @media (max-width: 991px) {
   .hero {
     padding: 130px 0px 0px 0px !important;
@@ -675,6 +761,7 @@ h1 {
     align-items: center;
   }
   .banner-hero {
+    padding: 0px;
     width: min(350px, 85vw);
     aspect-ratio: 1 / 1;
     border-radius: 50%;
@@ -733,9 +820,10 @@ h1 {
   .carousel-item-hero img {
     width: 100%;
     height: 100%;
-    transform: scale(1.1);
+    transform: scale(1);
     object-fit: cover;
   }
+
   .carousel-indicators-hero button {
     transform: translateY(60px);
     width: 15px !important;
@@ -804,5 +892,27 @@ h1 {
   100% {
     transform: translate(0, 0) rotate(0deg) scale(1);
     border-radius: 58% 42% 63% 37% / 55% 66% 34% 45%;
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes drift {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes heroScroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-60%);
   }
 }

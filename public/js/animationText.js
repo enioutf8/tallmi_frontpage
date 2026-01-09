@@ -1,123 +1,106 @@
-gsap.registerPlugin(SplitText);
+document.addEventListener("DOMContentLoaded", () => {
+  const textEls = document.querySelectorAll(".text");
+  if (!textEls.length) return;
 
-/* =========================
-   VARIÁVEIS
-========================= */
+  textEls.forEach((textEl) => {
+    const chars = [];
 
-let split;
-let animation;
+    function wrapChars(node) {
+      // Nó de texto
+      if (node.nodeType === Node.TEXT_NODE) {
+        const fragment = document.createDocumentFragment();
+        const text = node.textContent.replace(/^\s+|\s+$/g, "");
 
-let split2;
-let animation2;
+        text.split("").forEach((char) => {
+          if (char === " ") {
+            fragment.appendChild(document.createTextNode(" "));
+          } else {
+            const span = document.createElement("span");
+            span.className = "char";
+            span.textContent = char;
+            fragment.appendChild(span);
+            chars.push(span);
+          }
+        });
 
-/* =========================
-   ANIMAÇÕES - TEXT
-========================= */
+        return fragment;
+      }
 
-function animateChars(delay = 0) {
-  animation && animation.revert();
+      // Nó de elemento (span, br, etc)
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        const clone = node.cloneNode(false);
 
-  animation = gsap.from(split.chars, {
-    x: 150,
-    opacity: 0,
-    duration: 3,
-    ease: "power4.out",
-    stagger: 0.04,
-    delay,
-    onStart: () => {
-      gsap.set(".text", { autoAlpha: 1 });
-    },
+        node.childNodes.forEach((child) => {
+          clone.appendChild(wrapChars(child));
+        });
+
+        return clone;
+      }
+
+      return node.cloneNode(true);
+    }
+
+    const originalNodes = [...textEl.childNodes];
+    textEl.innerHTML = "";
+
+    originalNodes.forEach((node) => {
+      textEl.appendChild(wrapChars(node));
+    });
+
+    // animação estilo SplitText
+    gsap.set(textEl, { autoAlpha: 1 });
+
+    gsap.from(chars, {
+      x: 150,
+      opacity: 0,
+      duration: 3,
+      ease: "power4.out",
+      stagger: 0.04,
+      delay: 0.3,
+    });
   });
-}
-
-function animateWords() {
-  animation && animation.revert();
-
-  animation = gsap.from(split.words, {
-    y: -100,
-    opacity: 0,
-    rotation: "random(-80, 80)",
-    duration: 0.7,
-    ease: "back.out(1.7)",
-    stagger: 0.15,
-  });
-}
-
-function animateLines() {
-  animation && animation.revert();
-
-  animation = gsap.from(split.lines, {
-    rotationX: -100,
-    transformOrigin: "50% 50% -160px",
-    opacity: 0,
-    duration: 0.1,
-    ease: "power3.out",
-    stagger: 0.25,
-  });
-}
-
-/* =========================
-   ANIMAÇÃO - TEXT2 (LINES)
-========================= */
-
-function animateLinesText2(delay = 0) {
-  animation2 && animation2.revert();
-
-  animation2 = gsap.from(split2.lines, {
-    rotationX: -90,
-    transformOrigin: "50% 50% -120px",
-    opacity: 0,
-    duration: 1,
-    ease: "power3.out",
-    stagger: 0.2,
-    delay,
-    onStart: () => {
-      gsap.set(".text2", { autoAlpha: 1 });
-    },
-  });
-}
-
-/* =========================
-   SETUP
-========================= */
-
-function setup() {
-  split && split.revert();
-  animation && animation.revert();
-
-  gsap.set(".text", { autoAlpha: 0 });
-
-  split = SplitText.create(".text", {
-    type: "chars,words,lines",
-  });
-
-  animateChars(0.3);
-}
-
-function setupText2() {
-  split2 && split2.revert();
-  animation2 && animation2.revert();
-
-  gsap.set(".text2", { autoAlpha: 0 });
-
-  split2 = SplitText.create(".text2", {
-    type: "lines",
-  });
-
-  // anima automaticamente ao renderizar
-  animateLinesText2(0.6);
-}
-
-/* =========================
-   INIT
-========================= */
-
-window.addEventListener("load", () => {
-  setup();
-  setupText2();
 });
 
-window.addEventListener("resize", () => {
-  setup();
-  setupText2();
+// BANNER HOME
+document.addEventListener("DOMContentLoaded", () => {
+  const video = document.querySelector(".carousel-video");
+  if (video) {
+    video.playbackRate = 1.1; // 1.1 = levemente mais rápido | 1.3 já fica bem perceptível
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const carousel = document.querySelector(".carousel");
+  const videos = document.querySelectorAll(".carousel-video");
+
+  function updateVideos() {
+    videos.forEach((video) => {
+      const item = video.closest(".carousel-item");
+
+      if (item.classList.contains("active")) {
+        video.currentTime = 0;
+        video.playbackRate = 1.2; // opcional
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+  }
+
+  // roda ao carregar
+  updateVideos();
+
+  // roda sempre que o slide muda (Bootstrap)
+  carousel.addEventListener("slid.bs.carousel", updateVideos);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  new Typed("#typed", {
+    strings: ["SITES <br><span class='sub-h1'>QUE VENDEM</span>"],
+    typeSpeed: 100,
+    showCursor: true,
+    cursorChar: "", // 👈 remove o |
+    contentType: "html",
+  });
 });
